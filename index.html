@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的声音按钮网页</title>
+    <style>
+        /* 页面基础样式 */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* 按钮通用样式 */
+        .sound-btn {
+            padding: 20px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .sound-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== 自定义配置区 ========== -->
+    <!-- 1. 按钮1：修改文字、背景色、声音链接 -->
+    <button class="sound-btn" style="background-color: #ff6b6b;" onclick="playSound('https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3')">
+        提示音
+    </button>
+
+    <!-- 2. 按钮2：修改文字、背景色、声音链接 -->
+    <button class="sound-btn" style="background-color: #4ecdc4;" onclick="playSound('https://assets.mixkit.co/sfx/preview/mixkit-click-1117.mp3')">
+        点击音
+    </button>
+
+    <!-- 3. 可复制上面的按钮代码，添加更多按钮 -->
+    <!-- 示例：
+    <button class="sound-btn" style="background-color: #f9c74f;" onclick="playSound('你的声音链接')">
+        自定义文字
+    </button>
+    -->
+    <!-- ========== 自定义配置区结束 ========== -->
+
+    <!-- 声音播放函数 -->
+    <script>
+        // 播放声音的核心函数
+        function playSound(soundUrl) {
+            // 创建音频对象并播放
+            const audio = new Audio(soundUrl);
+            // 处理播放失败的情况
+            audio.play().catch(error => {
+                alert('声音播放失败，请检查链接或浏览器设置！');
+                console.error('播放错误：', error);
+            });
+        }
+    </script>
+</body>
+</html>
